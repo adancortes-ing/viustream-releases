@@ -12,7 +12,7 @@
 
 | Campo | Valor |
 | --- | --- |
-| Versión | **0.4.0** |
+| Versión | **0.4.1** |
 | Fecha | 16 de noviembre de 2026 |
 | Canal | Estable |
 | Descarga | [Última versión publicada](https://github.com/adancortes-ing/viustream-releases/releases/latest) |
@@ -29,7 +29,8 @@ listas y el progreso. Si la descarga o la instalación fallan, sigues en la vers
 puedes reintentar.
 
 > La 0.4.0 se instala **una vez a mano** sobre la 0.3.0, porque cambia el método de firma. A
-> partir de ahí, las actualizaciones se aplican solas como siempre y sin perder datos.
+> partir de ahí, las actualizaciones se aplican solas: la 0.4.1 ya llega por el canal firmado y
+> conserva perfiles, catálogo, listas y progreso.
 
 ## 🏷️ Etiquetas
 
@@ -105,14 +106,14 @@ de organizarla, mantenerla al día y recordar por dónde ibas.
 
 | Instalador | Para quién | Permisos |
 | --- | --- | --- |
-| `ViuStreamPro-0.4.0-user-x64.msi` | Solo tu cuenta de Windows | No pide administrador |
-| `ViuStreamPro-0.4.0-machine-x64.msi` | Todos los usuarios del equipo | Pide UAC |
+| `ViuStreamPro-0.4.1-user-x64.msi` | Solo tu cuenta de Windows | No pide administrador |
+| `ViuStreamPro-0.4.1-machine-x64.msi` | Todos los usuarios del equipo | Pide UAC |
 
 ### Pasos
 
 1. Abre [Releases](https://github.com/adancortes-ing/viustream-releases/releases/latest) y
    descarga el MSI que corresponda a tu caso.
-2. Comprueba que el archivo pertenece a la release 0.4.0 y que su SHA-256 coincide con el
+2. Comprueba que el archivo pertenece a la release 0.4.1 y que su SHA-256 coincide con el
    publicado en `update.json` (adjunto en la misma release, junto a su firma `update.json.sig`).
 3. Ejecuta el MSI y sigue el asistente. La instalación por usuario no necesita permisos de
    administrador; la instalación por máquina pedirá elevación.

@@ -7,13 +7,13 @@ versionado sigue [SemVer 2.0.0](https://semver.org/lang/es/). Las versiones se p
 instaladores en [Releases](https://github.com/adancortes-ing/viustream-releases/releases), junto
 al manifiesto de actualización firmado.
 
-## [0.4.1] - En preparación
+## [0.4.1] - 2026-11-16
 
 ### Cambiado
 
-- Versión de verificación del canal firmado: instala la 0.4.0 y comprueba que la actualización a
-  0.4.1 se aplica con el manifiesto firmado y el instalador sin Authenticode. Sin cambios
-  funcionales previstos.
+- Versión de verificación del canal firmado: la 0.4.0 detecta, descarga y aplica esta
+  actualización con el manifiesto firmado y el instalador sin Authenticode. Sin cambios
+  funcionales.
 
 ## [0.4.0] - 2026-11-16
 
@@ -106,7 +106,7 @@ al manifiesto de actualización firmado.
 - Actualizador integrado: descarga desde el canal estable, verificación SHA-256 y Authenticode,
   y manifiesto `update.json` con la versión, los paquetes y sus hashes.
 
-[0.4.1]: https://github.com/adancortes-ing/viustream-releases/compare/v0.4.0...HEAD
+[0.4.1]: https://github.com/adancortes-ing/viustream-releases/compare/v0.4.0...v0.4.1
 [0.4.0]: https://github.com/adancortes-ing/viustream-releases/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/adancortes-ing/viustream-releases/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/adancortes-ing/viustream-releases/compare/v0.1.0...v0.2.0
