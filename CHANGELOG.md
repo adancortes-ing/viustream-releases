@@ -4,11 +4,44 @@ Todos los cambios relevantes de ViuStream Pro se documentan en este archivo.
 
 El formato sigue [Keep a Changelog 1.1.0](https://keepachangelog.com/es-ES/1.1.0/) y el
 versionado sigue [SemVer 2.0.0](https://semver.org/lang/es/). Las versiones se publican como
-instaladores firmados en [Releases](https://github.com/adancortes-ing/viustream-releases/releases).
+instaladores en [Releases](https://github.com/adancortes-ing/viustream-releases/releases), junto
+al manifiesto de actualización firmado.
 
-## [No publicado]
+## [0.4.1] - En preparación
 
-Sin cambios todavía.
+### Cambiado
+
+- Versión de verificación del canal firmado: instala la 0.4.0 y comprueba que la actualización a
+  0.4.1 se aplica con el manifiesto firmado y el instalador sin Authenticode. Sin cambios
+  funcionales previstos.
+
+## [0.4.0] - 2026-11-16
+
+### Añadido
+
+- `update.json.sig`: firma ECDSA P-256 + SHA-256 del manifiesto de actualización, publicada
+  junto a `update.json`.
+
+### Cambiado
+
+- Los instaladores y ejecutables se publican **sin firma Authenticode**. Windows puede mostrar
+  «Editor desconocido» o el aviso de SmartScreen al instalar; es esperado. Comprueba el SHA-256
+  del MSI publicado en `update.json`.
+- La actualización automática verifica la firma del manifiesto antes de leerlo y, después, el
+  SHA-256 del instalador. Si la firma o el hash no cuadran, se rechaza y se conserva la versión
+  instalada.
+- Cada release publica cuatro archivos: los dos instaladores, `update.json` y `update.json.sig`.
+- La 0.3.0 se sustituye una vez a mano por la 0.4.0, conservando perfiles, catálogo, listas y
+  progreso. A partir de la 0.4.0, las actualizaciones vuelven a ser automáticas.
+
+### Seguridad
+
+- El manifiesto firmado impide aceptar una actualización manipulada aunque el repositorio
+  público o la red estén comprometidos: sin la clave privada no se puede fabricar una firma
+  válida. Un replay de una release antigua ya firmada no se puede falsificar, pero la
+  comparación de versiones y `MajorUpgrade` bloquean la bajada.
+- La firma del manifiesto no sustituye a la reputación de SmartScreen ni protege la primera
+  instalación manual; antes de instalar, verifica el SHA-256 publicado.
 
 ## [0.3.0] - 2026-11-16
 
@@ -73,7 +106,8 @@ Sin cambios todavía.
 - Actualizador integrado: descarga desde el canal estable, verificación SHA-256 y Authenticode,
   y manifiesto `update.json` con la versión, los paquetes y sus hashes.
 
-[No publicado]: https://github.com/adancortes-ing/viustream-releases/compare/v0.3.0...HEAD
+[0.4.1]: https://github.com/adancortes-ing/viustream-releases/compare/v0.4.0...HEAD
+[0.4.0]: https://github.com/adancortes-ing/viustream-releases/compare/v0.3.0...v0.4.0
 [0.3.0]: https://github.com/adancortes-ing/viustream-releases/compare/v0.2.0...v0.3.0
 [0.2.0]: https://github.com/adancortes-ing/viustream-releases/compare/v0.1.0...v0.2.0
 [0.1.0]: https://github.com/adancortes-ing/viustream-releases/releases/tag/v0.1.0

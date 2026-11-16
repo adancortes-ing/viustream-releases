@@ -12,7 +12,7 @@
 
 | Campo | Valor |
 | --- | --- |
-| Versión | **0.3.0** |
+| Versión | **0.4.0** |
 | Fecha | 16 de noviembre de 2026 |
 | Canal | Estable |
 | Descarga | [Última versión publicada](https://github.com/adancortes-ing/viustream-releases/releases/latest) |
@@ -22,12 +22,14 @@
 
 ViuStream Pro comprueba si hay una versión nueva al arrancar y, cuando quieras, desde
 **Ajustes → Actualizaciones → Comprobar ahora**. La aplicación descarga el instalador del canal
-estable, verifica el hash SHA-256 y la firma Authenticode, y solo entonces lo aplica: al cerrar
-la aplicación o con **Reiniciar y actualizar**, nunca durante una reproducción. La actualización
-no toca tus datos: se conservan los perfiles, el catálogo, las listas y el progreso. Si la
-descarga o la instalación fallan, sigues en la versión actual y puedes reintentar.
+estable, verifica la firma del manifiesto de actualización y el hash SHA-256 del paquete, y solo
+entonces lo aplica: al cerrar la aplicación o con **Reiniciar y actualizar**, nunca durante una
+reproducción. La actualización no toca tus datos: se conservan los perfiles, el catálogo, las
+listas y el progreso. Si la descarga o la instalación fallan, sigues en la versión actual y
+puedes reintentar.
 
-> Esta versión, **0.3.0**, se instala sobre **0.2.0** sin desinstalar antes y sin perder datos.
+> La 0.4.0 se instala **una vez a mano** sobre la 0.3.0, porque cambia el método de firma. A
+> partir de ahí, las actualizaciones se aplican solas como siempre y sin perder datos.
 
 ## 🏷️ Etiquetas
 
@@ -103,15 +105,15 @@ de organizarla, mantenerla al día y recordar por dónde ibas.
 
 | Instalador | Para quién | Permisos |
 | --- | --- | --- |
-| `ViuStreamPro-0.3.0-user-x64.msi` | Solo tu cuenta de Windows | No pide administrador |
-| `ViuStreamPro-0.3.0-machine-x64.msi` | Todos los usuarios del equipo | Pide UAC |
+| `ViuStreamPro-0.4.0-user-x64.msi` | Solo tu cuenta de Windows | No pide administrador |
+| `ViuStreamPro-0.4.0-machine-x64.msi` | Todos los usuarios del equipo | Pide UAC |
 
 ### Pasos
 
 1. Abre [Releases](https://github.com/adancortes-ing/viustream-releases/releases/latest) y
    descarga el MSI que corresponda a tu caso.
-2. Comprueba que el archivo pertenece a la release 0.3.0 y que su SHA-256 coincide con el
-   publicado en `update.json` (adjunto en la misma release).
+2. Comprueba que el archivo pertenece a la release 0.4.0 y que su SHA-256 coincide con el
+   publicado en `update.json` (adjunto en la misma release, junto a su firma `update.json.sig`).
 3. Ejecuta el MSI y sigue el asistente. La instalación por usuario no necesita permisos de
    administrador; la instalación por máquina pedirá elevación.
 4. Abre ViuStream Pro y completa la primera configuración: crea tu perfil (el primero es
@@ -120,12 +122,15 @@ de organizarla, mantenerla al día y recordar por dónde ibas.
 
 ### Firma y verificación
 
-Los instaladores y ejecutables se publican firmados con Authenticode, y cada archivo tiene su
-SHA-256 en el manifiesto de actualización. No instales un paquete con firma no válida o hash
-distinto del publicado.
+Los instaladores y ejecutables de esta versión **no llevan firma Authenticode**: Windows puede
+mostrar «Editor desconocido» o el aviso de SmartScreen al instalar. Es esperado. Antes de
+continuar, comprueba que el SHA-256 del MSI coincide con el publicado en `update.json`.
 
-> En esta etapa la firma usa un certificado de pruebas, no público: Windows puede mostrar
-> «Editor desconocido» o avisos de SmartScreen. Antes de continuar, verifica el SHA-256 publicado.
+Las actualizaciones automáticas sí están protegidas: `update.json` se publica firmado y la
+aplicación verifica esa firma antes de leer el manifiesto; después comprueba el SHA-256 del
+instalador. Si la firma o el hash no cuadran, la actualización se rechaza y sigues en la versión
+actual. Cada release publica cuatro archivos: los dos instaladores, `update.json` y
+`update.json.sig`.
 
 ### Desinstalación
 
@@ -152,7 +157,7 @@ distribuye canales ni credenciales.
 
 ViuStream Pro es software propietario. © 2026 ViuStream. Todos los derechos reservados.
 
-Este repositorio solo distribuye binarios firmados y el manifiesto de actualización. No se
+Este repositorio solo distribuye binarios y el manifiesto de actualización firmado. No se
 concede licencia alguna para reutilizar, modificar ni redistribuir el código de la aplicación.
 
 ViuStream Pro no proporciona contenido, listas ni credenciales. Solo reproduce fuentes que el
